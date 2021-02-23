@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './MonthSwitch.scss'
 import { format, addMonths, subMonths } from 'date-fns';
 
-function MonthSwitch() {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
+function MonthSwitch({currentMonth, setCurrentMonth}) {
 
   const dateFormat = 'MMMM yyyy';
   const nextMonth = () => {
