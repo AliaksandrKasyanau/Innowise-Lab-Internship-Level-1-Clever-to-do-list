@@ -3,8 +3,8 @@ import './DateSwitch.scss';
 import { format, addDays, startOfMonth, isSameDay, lastDayOfMonth, getDate } from 'date-fns';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 
-function DateSwitch() {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
+function DateSwitch({currentMonth}) {
+  // const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const renderCells = () => {
@@ -29,7 +29,7 @@ function DateSwitch() {
           onClick={() => onDateClick(cloneDay)}
         >
           <span className="number">{formattedDate}</span>
-          <div className="days row">{format(day, dayFormat)}</div>
+          <div className="days">{format(day, dayFormat)}</div>
         </div>
       );
       day = addDays(day, 1);
