@@ -1,14 +1,16 @@
-import React from 'react';
-import Calendar from './components/Calendar/Calendar';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 
+import Application from "./components/Application/Application";
+import UserProvider from "./providers/UserProvider";
+
+
 function App() {
+  
   return (
-    <div className="App">
-      <main>
-        <Calendar />
-      </main>
-    </div>
+    <UserProvider>
+    <Application />
+  </UserProvider>
   );
 }
 
