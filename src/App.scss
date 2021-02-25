@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 $text-color: #121212;
 $bg-image: url('https://i.pinimg.com/originals/b9/c8/f8/b9c8f893c9a782033a01f47e0c0b1d6e.jpg');
@@ -14,12 +16,14 @@ $bg-color: #f9f9f9;
   outline-color: none !important;
 }
 body {
-  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1em;
   font-weight: 300;
   line-height: 1.5;
   color: $text-color;
   background: $bg-image;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
 }
 main {
