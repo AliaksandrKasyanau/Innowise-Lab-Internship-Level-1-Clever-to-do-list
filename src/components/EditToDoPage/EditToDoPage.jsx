@@ -1,18 +1,19 @@
 import React, { useContext, useState } from 'react';
-import { navigate } from '@reach/router';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { db } from '../../firebase/firebase';
 import { TodosContext } from '../../providers/DaysProvider';
 import './EditToDoPage.scss';
 
 function EditToDoPage() {
+  const history = useHistory();
   const [todo, setTodo] = useContext(TodosContext);
   const [title, setTitle] = useState(todo ? todo.title : '');
   const [input, setInput] = useState(todo ? todo.todo : '');
   const [, setTodoUpdated] = useState(null);
 
   if (todo == null) {
-    navigate(-1);
+    history.push('/todo');
   }
 
   const editTodo = (event) => {
@@ -34,7 +35,7 @@ function EditToDoPage() {
           console.log('No such document!');
         }
       });
-    navigate(-1);
+    history.push('/todo');
     setTitle('');
     setInput('');
     setTodoUpdated(
@@ -79,10 +80,10 @@ function EditToDoPage() {
           className="button"
           type="submit"
           onClick={() => {
-            navigate(-1);
+            history.push('/todo');
           }}
         >
-          Sheduler
+          Back
         </button>
       </form>
     </div>

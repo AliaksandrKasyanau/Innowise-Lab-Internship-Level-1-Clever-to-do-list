@@ -1,5 +1,5 @@
-import { navigate } from '@reach/router';
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { db } from '../../firebase/firebase';
 import { DaysContext } from '../../providers/DaysProvider';
@@ -7,6 +7,7 @@ import { UserContext } from '../../providers/UserProvider';
 import './AddToDo.scss';
 
 const AddTodo = () => {
+  const history = useHistory();
   const [day] = useContext(DaysContext);
   const [title, setTitle] = useState('');
   const [input, setInput] = useState('');
@@ -61,7 +62,7 @@ const AddTodo = () => {
         <button className="button" type="submit" onClick={addTodo} disabled={!input || !title}>
           Add Todo
         </button>
-        <button className="button back-button" onClick={() => navigate('/')}>
+        <button className="button back-button" onClick={() => history.push('/')}>
           Back
         </button>
       </form>

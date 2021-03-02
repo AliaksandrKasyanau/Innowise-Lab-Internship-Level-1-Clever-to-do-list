@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Link, navigate } from '@reach/router';
 import { toast } from 'react-toastify';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { generateUserDocument } from '../../../firebase/firebaseDBQueries';
 import { auth } from '../../../firebase/firebase';
 import { signInWithGoogle } from '../../../firebase/firebaseAuthQueries';
+import { Link, useHistory } from 'react-router-dom';
 
 const SignUp = () => {
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
@@ -53,7 +54,7 @@ const SignUp = () => {
     setEmail('');
     setPassword('');
     setDisplayName('');
-    navigate('/');
+    history.push('/');
   };
 
   const onChangeHandler = (event) => {
@@ -119,7 +120,7 @@ const SignUp = () => {
                 } catch (error) {
                   console.error('Error signing in with Google', error);
                 }
-                navigate('/');
+                history.push('/');
               }}
               className="button google-button"
             >

@@ -1,17 +1,18 @@
-import { navigate } from '@reach/router';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { auth } from '../../../firebase/firebase';
 import './ToDoListFooter.scss';
 
 function ToDoListFooter() {
+  const history = useHistory();
   const [, setIsLoggedIn] = useState(null);
   return (
     <div className="todo-list-footer">
       <button
         className="button"
         onClick={() => {
-          navigate('add-todo');
+          history.push('create-todo');
         }}
       >
         <p className="icon">add_circle</p> Add a New Task

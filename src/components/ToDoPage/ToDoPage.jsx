@@ -1,12 +1,13 @@
 import React from 'react';
-import { navigate } from '@reach/router';
 import { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { firestore } from '../../firebase/firebase';
 import { TodosContext } from '../../providers/DaysProvider';
 import './ToDoPage.scss';
 
 function ToDoPage() {
+  const history = useHistory();
   const [todo] = useContext(TodosContext);
   const [, setTodoDeleted] = useState(null);
 
@@ -26,11 +27,11 @@ function ToDoPage() {
           progress: undefined,
         });
       });
-    navigate(-1);
+    history.push('/');
   };
 
   if (todo == null) {
-    navigate(-1);
+    history.push('/');
   }
   return todo ? (
     <>
@@ -48,7 +49,7 @@ function ToDoPage() {
         <button
           className="button"
           onClick={() => {
-            navigate('edit-todo');
+            history.push('/edit-todo');
           }}
         >
           Edit Task
@@ -65,7 +66,7 @@ function ToDoPage() {
           className="button"
           type="submit"
           onClick={() => {
-            navigate(-1);
+            history.push('/');
           }}
         >
           Back

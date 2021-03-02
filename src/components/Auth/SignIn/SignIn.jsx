@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from '@reach/router';
 import '../Auth.scss';
 import { toast } from 'react-toastify';
 import { Container, Row, Col } from 'react-bootstrap';
 import { signInWithGoogle } from '../../../firebase/firebaseAuthQueries';
 import { auth } from '../../../firebase/firebase';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -75,7 +75,7 @@ const SignIn = () => {
                 id="userPassword"
                 onChange={(event) => onChangeHandler(event)}
               />
-              <Link to="passwordReset" className="link">
+              <Link to="password-reset" className="link">
                 Forgot Password?
               </Link>
               <button
@@ -98,7 +98,7 @@ const SignIn = () => {
             </button>
             <p>
               Don`t have an account?{' '}
-              <Link to="signUp" className="link">
+              <Link to="sign-up" className="link">
                 Sign up
               </Link>{' '}
             </p>

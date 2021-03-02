@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { DaysContext, TodosContext } from '../../../providers/DaysProvider';
-import { Link } from '@reach/router';
 import { UserContext } from '../../../providers/UserProvider';
 import './ToDoList.scss';
 import { db, firestore } from '../../../firebase/firebase';
+import { Link } from 'react-router-dom';
 
 const ListTodo = () => {
   const [day] = useContext(DaysContext);
@@ -78,7 +78,7 @@ const ListTodo = () => {
                       <Link
                         className="todo-link"
                         key={todo.id}
-                        to="todo"
+                        to="/todo"
                         onClick={() => {
                           setTodo(todo);
                         }}
@@ -89,7 +89,7 @@ const ListTodo = () => {
                       <Link
                         className="todo-link todo-link-done"
                         key={todo.id}
-                        to="todo"
+                        to="/todo"
                         onClick={() => {
                           setTodo(todo);
                         }}
