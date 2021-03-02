@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Router } from '@reach/router';
 import SignIn from '../components/Auth/SignIn/SignIn';
 import SignUp from '../components/Auth/SignUp/SignUp';
 import HomePage from '../components/HomePage/HomePage';
@@ -9,6 +8,7 @@ import DaysProvider from '../providers/DaysProvider';
 import ToDoPage from '../components/ToDoPage/ToDoPage';
 import AddToDoPage from '../components/AddToDoPage/AddToDoPage';
 import EditToDoPage from '../components/EditToDoPage/EditToDoPage';
+import { Router } from '@reach/router';
 
 function Routes() {
   const user = useContext(UserContext);
@@ -17,9 +17,9 @@ function Routes() {
       <DaysProvider>
         <Router>
           <HomePage path="/" />
-          <ToDoPage path="todo" />
-          <AddToDoPage path="add-todo" />
-          <EditToDoPage path="edit-todo" />
+          <ToDoPage path="/todo" />
+          <AddToDoPage path="/add-todo" />
+          <EditToDoPage path="/edit-todo" />
           <HomePage path="/*" />
         </Router>
       </DaysProvider>
@@ -28,8 +28,8 @@ function Routes() {
     <div className="App">
       <Router>
         <SignIn path="/" />
-        <SignUp path="signUp" />
-        <PasswordReset path="passwordReset" />
+        <SignUp path="/signUp" />
+        <PasswordReset path="/passwordReset" />
         <SignIn path="/*" />
       </Router>
     </div>
