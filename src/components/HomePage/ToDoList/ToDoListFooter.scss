@@ -1,0 +1,44 @@
+$main-color: #d6a4a4;
+.todo-list-footer {
+  margin-top: 1rem;
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background: $main-color;
+    font-size: 17px;
+    margin-bottom: 1rem;
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      margin: 0 1rem 0 0;
+      font-size: 17px;
+    }
+  }
+  .sign-out {
+    margin-bottom: 2rem;
+  }
+}
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+  .todo-list-footer {
+    margin-top: 0.5rem;
+    .button {
+      font-size: 15px;
+      margin-bottom: 1rem;
+      p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin: 0 1rem 0 0;
+        font-size: 15px;
+      }
+    }
+    .sign-out {
+      margin-bottom: 0;
+    }
+  }
+}

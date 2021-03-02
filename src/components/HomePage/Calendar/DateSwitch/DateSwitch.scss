@@ -1,22 +1,24 @@
 $item-bg-color: #121212;
 $text-color-light: #f2f2f2;
-$main-purple-color: #673faf;
+$main-color: #d6a4a4;
 
 .menu-wrapper {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  display: flex;
+  overflow: hidden;
+  background: #fff;
+  max-width: 700px;
 }
 .menu-item-wrapper {
   padding: 0.25rem;
   padding: 0.5rem;
 }
-.col {
+.day {
   min-width: 4.5rem;
   min-height: 5.5rem;
-  background: rgba(255, 255, 255, 0.6);
+  background: #fff;
   border-radius: 20px;
-  border: 3px solid $main-purple-color;
+  border: 3px solid $main-color;
   display: flex;
   flex-flow: column wrap;
   align-content: center;
@@ -24,10 +26,10 @@ $main-purple-color: #673faf;
   justify-content: center;
   cursor: pointer;
   &:hover {
-    background: $main-purple-color;
+    background: $main-color;
     box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.75);
     transition: 0.15s;
-    color: $text-color-light;
+    color: #fff;
   }
   .number {
     font-weight: 800;
@@ -39,10 +41,10 @@ $main-purple-color: #673faf;
   }
 }
 .selected {
-  background: $main-purple-color;
+  background: $main-color;
   box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.75);
   transition: 0.25s;
-  color: $text-color-light;
+  color: #fff;
   &:hover {
     box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.75);
     transition: 0.15s;
@@ -53,16 +55,21 @@ $main-purple-color: #673faf;
   justify-content: center;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
-  .col {
-    min-width: 4.6rem;
-    min-height: 5.5rem;
+  .menu-wrapper {
+    max-width: 280px;
+    width: 100%;
+  }
+  .day {
+    min-width: 2.6rem;
+    min-height: 3.5rem;
+    border-radius: 15px;
     .number {
       font-weight: 800;
-      font-size: 25px;
+      font-size: 15px;
     }
     .days {
       font-weight: 500;
-      font-size: 17px;
+      font-size: 12px;
     }
   }
   .menu-wrapper {
