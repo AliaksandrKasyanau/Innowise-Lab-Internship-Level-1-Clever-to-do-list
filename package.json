@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://aliaksandrkasyanau.github.io/Innowise-Lab-Internship-Level-1-Clever-to-do-list/",
+  "start_url": ".",
   "dependencies": {
     "@reach/router": "^1.3.4",
     "@react-firebase/auth": "^0.2.10",

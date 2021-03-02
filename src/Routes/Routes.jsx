@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Router } from '@reach/router';
+import { Redirect, Router } from '@reach/router';
 import SignIn from '../components/Auth/SignIn/SignIn';
 import SignUp from '../components/Auth/SignUp/SignUp';
 import HomePage from '../components/HomePage/HomePage';
@@ -14,22 +14,23 @@ function Routes() {
   const user = useContext(UserContext);
   return user ? (
     <div className="App">
-        <DaysProvider>
-          <Router>
-            <HomePage path="/" />
-            <ToDoPage path="todo" />
-            <AddToDoPage path="add-todo" />
-            <EditToDoPage path="edit-todo" />
-          </Router>
-        </DaysProvider>
+      <DaysProvider>
+        <Router>
+          <Redirect from="*" to="/" />
+          <HomePage path="/" />
+          <ToDoPage path="todo" />
+          <AddToDoPage path="add-todo" />
+          <EditToDoPage path="edit-todo" />
+        </Router>
+      </DaysProvider>
     </div>
   ) : (
     <div className="App">
-        <Router>
+      <Router>
         <SignIn path="/" />
-          <SignUp path="signUp" />
-          <PasswordReset path="passwordReset" />
-        </Router>
+        <SignUp path="signUp" />
+        <PasswordReset path="passwordReset" />
+      </Router>
     </div>
   );
 }
