@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import './App.scss';
-
-import Application from "./components/Application/Application";
-import UserProvider from "./providers/UserProvider";
-
+import React from 'react'
+import './App.scss'
+import UserProvider from './providers/UserProvider'
+import Routes from './Routes/Routes'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
-  
   return (
     <UserProvider>
-    <Application />
-  </UserProvider>
-  );
+      <ToastContainer />
+      <Routes />
+    </UserProvider>
+  )
 }
 
-export default App;
+export default App

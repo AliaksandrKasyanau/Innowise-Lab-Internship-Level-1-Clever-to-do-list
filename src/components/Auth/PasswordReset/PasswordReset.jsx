@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { auth } from '../../../firebase';
 import { Link } from '@reach/router';
+import { toast } from 'react-toastify';
+import { auth } from '../../../firebase/firebase';
 
 const PasswordReset = () => {
   const [email, setEmail] = useState('');
-  const [emailHasBeenSent, setEmailHasBeenSent] = useState(false);
-  const [error, setError] = useState(null);
+  const [, setEmailHasBeenSent] = useState(null);
+  const [, setError] = useState(null);
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -20,13 +21,29 @@ const PasswordReset = () => {
     auth
       .sendPasswordResetEmail(email)
       .then(() => {
-        setEmailHasBeenSent(true);
+        setEmailHasBeenSent(toast.success('Email has been sent!'), {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         setTimeout(() => {
-          setEmailHasBeenSent(false);
-        }, 3000);
+          setEmailHasBeenSent(null);
+        }, 5000);
       })
       .catch(() => {
-        setError('Error: Ooops, something went wrong');
+        setError(toast.error('Invalid credentials'), {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
   return (
@@ -54,10 +71,6 @@ const PasswordReset = () => {
               Send me a reset link
             </button>
           </form>
-          {emailHasBeenSent && <div className="email-sent">An email has been sent to you!</div>}
-          <div className="error-wrapper">
-            {error !== null && <div className="error">{error}</div>}
-          </div>
 
           <Link to="/" className="link">
             &larr; back to sign in page

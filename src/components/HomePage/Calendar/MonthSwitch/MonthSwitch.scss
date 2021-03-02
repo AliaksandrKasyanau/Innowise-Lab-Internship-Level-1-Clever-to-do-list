@@ -1,9 +1,7 @@
-
-
 $text-color: #121212;
 $item-bg-color: #121212;
 $text-color-light: #f2f2f2;
-$main-purple-color: #673faf;
+$main-color: #d6a4a4;
 
 .icon {
   font-family: 'Material Icons', serif;
@@ -28,13 +26,16 @@ $main-purple-color: #673faf;
   justify-content: space-between;
   align-items: center;
   font-weight: 800;
+  background: #fff;
   color: $item-bg-color;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   span {
     font-size: 25px;
   }
   .arrow {
     cursor: pointer;
-    border: 3px solid #673faf;
+    border: 3px solid $main-color;
     border-radius: 50px;
     display: flex;
     align-items: center;
@@ -45,7 +46,7 @@ $main-purple-color: #673faf;
     color: $text-color;
     font-size: 30px;
     &:hover {
-      background: $main-purple-color;
+      background: $main-color;
       box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.75);
       transition: 0.15s;
       color: $text-color-light;
@@ -55,6 +56,7 @@ $main-purple-color: #673faf;
 
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   .month-wrapper {
+    padding-top: 0;
     span {
       font-size: 22px;
     }

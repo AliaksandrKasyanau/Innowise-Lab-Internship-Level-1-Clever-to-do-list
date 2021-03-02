@@ -1,0 +1,15 @@
+.calendar {
+  display: block;
+  position: relative;
+  width: 100%;
+  background: #fff;
+  .container {
+    padding: 1rem;
+  }
+}
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+  .calendar {
+    box-shadow: none;
+    margin: 0 auto;
+  }
+}

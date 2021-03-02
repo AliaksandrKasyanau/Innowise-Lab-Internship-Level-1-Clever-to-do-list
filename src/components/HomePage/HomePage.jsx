@@ -1,19 +1,21 @@
 import React from 'react';
-import Calendar from '../Calendar/Calendar';
-import { auth } from '../../firebase';
+import Calendar from './Calendar/Calendar';
+import ListTodo from './ToDoList/ToDoList';
+import { Container, Row, Col } from 'react-bootstrap';
+import ToDoListFooter from './ToDoList/ToDoListFooter';
 
 function HomePage() {
   return (
     <>
-      <Calendar />
-      <button
-        className="w-full py-3 bg-red-600 mt-4 text-white"
-        onClick={() => {
-          auth.signOut();
-        }}
-      >
-        Sign out
-      </button>
+      <Container>
+        <Row>
+          <Col xs={12}>
+            <Calendar />
+            <ListTodo />
+            <ToDoListFooter />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
