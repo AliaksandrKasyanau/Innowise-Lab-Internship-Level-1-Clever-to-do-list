@@ -8,7 +8,7 @@ This project was created with React and Firebase.
 
 1. Clone the develop branch.
 
-`$ git clone https://github.com/vitali-kruchkou/Innowise-Lab-Internship-Level-1-Clever-to-do-list -b develop`
+`$ git clone https://github.com/AliaksandrKasyanau/Innowise-Lab-Internship-Level-1-Clever-to-do-list -b develop`
 
 2. Go to the directory
 
