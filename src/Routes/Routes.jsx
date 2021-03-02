@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import SignIn from '../components/Auth/SignIn/SignIn';
-import SignUp from '../components/Auth/SignUp/SignUp';
-import HomePage from '../components/HomePage/HomePage';
-import AddToDoPage from '../components/AddToDoPage/AddToDoPage';
+import SignIn from '../modules/Auth/SignIn/SignIn';
+import SignUp from '../modules/Auth/SignUp/SignUp';
+import HomePage from '../modules/HomePage/HomePage';
+import AddToDoPage from '../modules/AddToDoPage/AddToDoPage';
 import { UserContext } from '../providers/UserProvider';
-import PasswordReset from '../components/Auth/PasswordReset/PasswordReset';
+import PasswordReset from '../modules/Auth/PasswordReset/PasswordReset';
 import DaysProvider from '../providers/DaysProvider';
-import ToDoPage from '../components/ToDoPage/ToDoPage';
-import EditToDoPage from '../components/EditToDoPage/EditToDoPage';
+import ToDoPage from '../modules/ToDoPage/ToDoPage';
+import EditToDoPage from '../modules/EditToDoPage/EditToDoPage';
 import { Redirect, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 function Routes() {
