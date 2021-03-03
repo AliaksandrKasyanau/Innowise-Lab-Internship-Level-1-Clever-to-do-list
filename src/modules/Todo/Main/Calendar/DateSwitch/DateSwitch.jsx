@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import './DateSwitch.scss';
 import { format, addDays, startOfMonth, isSameDay, lastDayOfMonth, getDate } from 'date-fns';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
-import { DaysContext } from '../../../../providers/DaysProvider';
+import { DaysContext } from '@providers/DaysProvider';
 
 function DateSwitch({ currentMonth }) {
   const [day, setDay] = useContext(DaysContext);

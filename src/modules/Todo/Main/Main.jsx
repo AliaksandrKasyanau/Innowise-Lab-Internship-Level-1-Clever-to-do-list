@@ -4,7 +4,7 @@ import ListTodo from './ToDoList/ToDoList';
 import { Container, Row, Col } from 'react-bootstrap';
 import ToDoListFooter from './ToDoList/ToDoListFooter';
 
-function HomePage() {
+function Main() {
   return (
     <>
       <Container>
@@ -19,4 +19,4 @@ function HomePage() {
     </>
   );
 }
-export default HomePage;
+export default Main;

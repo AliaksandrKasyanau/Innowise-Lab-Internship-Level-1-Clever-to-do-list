@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { auth } from '../../../firebase/firebase';
+import { sendResetEmail } from '@firebaseAlias/firebaseDBQueries';
 
 const PasswordReset = () => {
   const [email, setEmail] = useState('');
-  const [, setEmailHasBeenSent] = useState(null);
-  const [, setError] = useState(null);
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -15,36 +12,9 @@ const PasswordReset = () => {
       setEmail(value);
     }
   };
-
-  const sendResetEmail = (event) => {
-    event.preventDefault();
-    auth
-      .sendPasswordResetEmail(email)
-      .then(() => {
-        setEmailHasBeenSent(toast.success('Email has been sent!'), {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        setTimeout(() => {
-          setEmailHasBeenSent(null);
-        }, 5000);
-      })
-      .catch(() => {
-        setError(toast.error('Invalid credentials'), {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      });
+  const sendResetEmailHandler = (event) => {
+    sendResetEmail(event, email);
+    setEmail('');
   };
   return (
     <div className="auth-wrapper">
@@ -62,12 +32,7 @@ const PasswordReset = () => {
               onChange={onChangeHandler}
               className="input"
             />
-            <button
-              className="button primary-button fp-button"
-              onClick={(event) => {
-                sendResetEmail(event);
-              }}
-            >
+            <button className="button primary-button fp-button" onClick={sendResetEmailHandler}>
               Send me a reset link
             </button>
           </form>

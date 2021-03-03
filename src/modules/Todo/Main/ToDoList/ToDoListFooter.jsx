@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { auth } from '../../../firebase/firebase';
+import { successToast } from '@configs/toastConfig';
+import { auth } from '@firebaseAlias/firebase';
 import './ToDoListFooter.scss';
 
 function ToDoListFooter() {
@@ -21,15 +21,7 @@ function ToDoListFooter() {
         className="button sign-out"
         onClick={() => {
           auth.signOut().then(() => {
-            setIsLoggedIn(toast.success('You are logged off!'), {
-              position: 'top-right',
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            setIsLoggedIn(successToast('You are logged off!'));
           });
         }}
       >

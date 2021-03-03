@@ -2,10 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import '~bootstrap/scss/bootstrap';
-
-$text-color: #121212;
-$bg-image: url('https://i.pinimg.com/originals/b9/c8/f8/b9c8f893c9a782033a01f47e0c0b1d6e.jpg');
-$bg-color: #f9f9f9;
+@import './styles/variables.scss';
 
 * {
   box-sizing: border-box;

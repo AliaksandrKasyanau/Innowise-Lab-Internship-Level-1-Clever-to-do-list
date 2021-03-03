@@ -1,5 +1,12 @@
-$main-color: #d6a4a4;
-.todo-wrapper {
+@import '@styles/variables.scss';
+.add-todo-wrapper {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  height: 500px;
+  padding: 1rem;
   h1 {
     font-weight: 800;
     color: $main-color;
@@ -57,6 +64,4 @@ $main-color: #d6a4a4;
       margin: 0;
     }
   }
-}
-@media only screen and (min-width: 0px) and (max-width: 767px) {
 }

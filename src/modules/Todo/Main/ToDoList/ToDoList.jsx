@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { DaysContext, TodosContext } from '../../../providers/DaysProvider';
-import { UserContext } from '../../../providers/UserProvider';
 import './ToDoList.scss';
-import { db, firestore } from '../../../firebase/firebase';
+import { db, firestore } from '@firebaseAlias/firebase';
 import { Link } from 'react-router-dom';
+import { DaysContext, TodosContext } from '@providers/DaysProvider';
+import { UserContext } from '@providers/UserProvider';
+import { unsub, statusHandler } from '@firebaseAlias/firebaseDBQueries';
 
 const ListTodo = () => {
   const [day] = useContext(DaysContext);
@@ -12,32 +13,11 @@ const ListTodo = () => {
   const user = useContext(UserContext);
 
   useEffect(() => {
-    const unsub = firestore
-      .collection('todos')
-      .where('userId', '==', user.uid)
-      .where('date', '==', day)
-      .onSnapshot((snapshot) => {
-        setTodos(
-          snapshot.docs.map((doc) => {
-            return {
-              date: day,
-              id: doc.id,
-              title: doc.data().title,
-              todo: doc.data().todo,
-              status: doc.data().status,
-            };
-          })
-        );
-      });
-    return () => {
-      unsub();
-    };
+    unsub(firestore, user, day, setTodos);
   }, [day]);
 
-  const statusHandler = (todo) => {
-    db.collection('todos').doc(todo.id).update({
-      status: !todo.status,
-    });
+  const todoStatusHandler = (todo) => {
+    statusHandler(todo, db);
   };
 
   return (
@@ -55,7 +35,7 @@ const ListTodo = () => {
                           <div
                             className="icon status-unchecked"
                             onClick={() => {
-                              statusHandler(todo);
+                              todoStatusHandler(todo);
                             }}
                           >
                             radio_button_unchecked
@@ -66,7 +46,7 @@ const ListTodo = () => {
                           <div
                             className="icon status-checked"
                             onClick={() => {
-                              statusHandler(todo);
+                              todoStatusHandler(todo);
                             }}
                           >
                             check_circle

@@ -72,6 +72,10 @@ PageContent.jsx
 
 List of packages I used for this app
 
+## React-app-rewired and React-app-rewire-alias
+
+Used to config alias
+
 ### React-router-dom
 
 Used to add routings
@@ -97,21 +101,23 @@ Used to format date
     └──src                            #Main folder for source code
         ├──firebase                   #Contains firebase init script
         ├──modules                    #Contains the main components of the application
-            ├──Auth                   #Contains the Authorization page
+            ├──Auth                   #Contains the Authorization module
                 ├──PasswordReset          #Password reset component
                 ├──SignIn                 #Sign In component
                 ├──SignUp                 #Sign Up component
-            └──HomePage               #Contains the main page for a to-do list
-                ├──Calendar           #Contains Calendar component
-                    ├──DateSwitch               #DateSwitch Component
-                    ├──MonthSwitch              #MonthSwitch Component
-                ├──ToDoList              #ToDoList component
-                ├──HomePage.jsx          #HomePage component
-            ├──ToDoPage                  #Contains the page with switched todo
-            ├──AddToDoPage               #Contains the page for adding a todos
-            ├──EditToDoPage              #Contains the page for edit a todos
+            ├──Todo                   #Contains the Todo module
+                └──Main               #Contains the main page for a to-do list
+                    ├──Calendar           #Contains Calendar component
+                        ├──DateSwitch               #DateSwitch Component
+                        ├──MonthSwitch              #MonthSwitch Component
+                    ├──ToDoList              #ToDoList component
+                    ├──Main.jsx          #Main component
+                ├──ToDo                  #Contains the page with switched todo
+                ├──AddToDo               #Contains the page for adding a todos
+                ├──EditToDo              #Contains the page for edit a todos
         ├──providers                  #Folder with context`s
         ├──routes                     #Routing
+        ├──styles                     #Style variables
         └──index.js
 
 ## Styling

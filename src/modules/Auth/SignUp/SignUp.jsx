@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
 import { Container, Row, Col } from 'react-bootstrap';
-
-import { generateUserDocument } from '../../../firebase/firebaseDBQueries';
-import { auth } from '../../../firebase/firebase';
-import { signInWithGoogle } from '../../../firebase/firebaseAuthQueries';
+import {
+  createUserWithEmailAndPasswordHandler,
+  signInWithGoogleHandler,
+} from '@firebaseAlias/firebaseAuthQueries';
 import { Link, useHistory } from 'react-router-dom';
 
 const SignUp = () => {
@@ -12,50 +11,6 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
-  const [, setError] = useState(null);
-  const [, setIsRegistered] = useState(null);
-  const [, setIsLoggedIn] = useState(null);
-
-  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
-    event.preventDefault();
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, { displayName });
-      setIsRegistered(toast.success('Account has been created!'), {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      setIsLoggedIn(toast.success('You are logged in!'), {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    } catch (error) {
-      setError(toast.error('Invalid credentials!'), {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-
-    setEmail('');
-    setPassword('');
-    setDisplayName('');
-    history.push('/');
-  };
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -67,6 +22,17 @@ const SignUp = () => {
     } else if (name === 'displayName') {
       setDisplayName(value);
     }
+  };
+  const signUpHandler = (event) => {
+    createUserWithEmailAndPasswordHandler(event, email, password, displayName);
+    setEmail('');
+    setPassword('');
+    setDisplayName('');
+    history.push('/');
+  };
+  const googleAuth = () => {
+    signInWithGoogleHandler();
+    history.push('/');
   };
 
   return (
@@ -84,7 +50,7 @@ const SignUp = () => {
                 value={displayName}
                 placeholder="Your Name"
                 id="displayName"
-                onChange={(event) => onChangeHandler(event)}
+                onChange={onChangeHandler}
               />
               <input
                 type="email"
@@ -93,7 +59,7 @@ const SignUp = () => {
                 value={email}
                 placeholder="Email"
                 id="userEmail"
-                onChange={(event) => onChangeHandler(event)}
+                onChange={onChangeHandler}
               />
               <input
                 type="password"
@@ -102,28 +68,13 @@ const SignUp = () => {
                 value={password}
                 placeholder="Password"
                 id="userPassword"
-                onChange={(event) => onChangeHandler(event)}
+                onChange={onChangeHandler}
               />
-              <button
-                className="button primary-button"
-                onClick={(event) => {
-                  createUserWithEmailAndPasswordHandler(event, email, password);
-                }}
-              >
+              <button className="button primary-button" onClick={signUpHandler}>
                 Sign Up
               </button>
             </form>
-            <button
-              onClick={() => {
-                try {
-                  signInWithGoogle();
-                } catch (error) {
-                  console.error('Error signing in with Google', error);
-                }
-                history.push('/');
-              }}
-              className="button google-button"
-            >
+            <button onClick={googleAuth} className="button google-button">
               Sign In with Google
             </button>
 

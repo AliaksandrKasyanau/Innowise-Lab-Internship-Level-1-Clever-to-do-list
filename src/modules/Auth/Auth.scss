@@ -1,5 +1,4 @@
-$main-color: #d6a4a4;
-$text-color-light: #ffffff;
+@import '@styles/variables.scss';
 .auth-wrapper {
   display: flex;
   justify-content: center;

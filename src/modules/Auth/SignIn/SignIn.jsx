@@ -1,44 +1,16 @@
 import React, { useState } from 'react';
-import '../Auth.scss';
-import { toast } from 'react-toastify';
+import '@modules/Auth/Auth.scss';
 import { Container, Row, Col } from 'react-bootstrap';
-import { signInWithGoogle } from '../../../firebase/firebaseAuthQueries';
-import { auth } from '../../../firebase/firebase';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import {
+  signInWithEmailAndPasswordHandler,
+  signInWithGoogleHandler,
+} from '@firebaseAlias/firebaseAuthQueries';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [, setError] = useState(null);
-  const [, setIsLoggedIn] = useState(null);
-
-  const signInWithEmailAndPasswordHandler = (event, email, password) => {
-    event.preventDefault();
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        setIsLoggedIn(toast.success('You are logged in!'), {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      })
-      .catch(() => {
-        setError(toast.error('Invalid credentials!'), {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      });
-  };
+  const history = useHistory();
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -48,6 +20,13 @@ const SignIn = () => {
     } else if (name === 'userPassword') {
       setPassword(value);
     }
+  };
+  const emailPasswordAuth = (event) => {
+    signInWithEmailAndPasswordHandler(event, email, password);
+  };
+  const googleAuth = () => {
+    signInWithGoogleHandler();
+    history.push('/');
   };
   return (
     <>
@@ -78,21 +57,11 @@ const SignIn = () => {
               <Link to="password-reset" className="link">
                 Forgot Password?
               </Link>
-              <button
-                className="button primary-button"
-                onClick={(event) => {
-                  signInWithEmailAndPasswordHandler(event, email, password);
-                }}
-              >
+              <button className="button primary-button" onClick={emailPasswordAuth}>
                 Sign In
               </button>
             </form>
-            <button
-              className="button google-button"
-              onClick={() => {
-                signInWithGoogle();
-              }}
-            >
+            <button className="button google-button" onClick={googleAuth}>
               {' '}
               Sign in with Google
             </button>

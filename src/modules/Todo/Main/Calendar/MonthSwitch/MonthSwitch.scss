@@ -1,8 +1,4 @@
-$text-color: #121212;
-$item-bg-color: #121212;
-$text-color-light: #f2f2f2;
-$main-color: #d6a4a4;
-
+@import '@styles/variables.scss';
 .icon {
   font-family: 'Material Icons', serif;
   font-style: normal;

@@ -1,9 +1,9 @@
-import React from 'react'
-import './App.scss'
-import UserProvider from './providers/UserProvider'
-import Routes from './Routes/Routes'
-import 'react-toastify/dist/ReactToastify.css'
-import { ToastContainer } from 'react-toastify'
+import React from 'react';
+import './App.scss';
+import UserProvider from '@providers/UserProvider';
+import Routes from '@routes/Routes';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <ToastContainer />
       <Routes />
     </UserProvider>
-  )
+  );
 }
 
-export default App
+export default App;
